@@ -1,3 +1,8 @@
+## v1.9.0
+
+- Switch SELinux disable to ansible selinux module
+- Add reboot handler for RHEL/CentOS after disabling SELinux
+
 ## v1.8.6
 
 - Correct args for install task
