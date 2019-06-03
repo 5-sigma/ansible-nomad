@@ -340,8 +340,14 @@ The role defines most of its variables in `defaults/main.yml`:
 
 ### `nomad_docker_enable`
 
+This will disable SELinux on RHEL/CentOS hosts and initiate a reboot using a handler.
+
 - Install Docker subsystem on nodes?
 - Default value: **false**
+
+### `nomad_docker_rhel_selinux_reboot_timeout`
+
+- Default value: **600**
 
 ### `nomad_group_name`
 

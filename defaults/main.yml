@@ -137,6 +137,7 @@ nomad_vault_token: ""
 ### Docker
 nomad_docker_enable: "{{ lookup('env','NOMAD_DOCKER_ENABLE') | default('false', true) }}"
 nomad_docker_dmsetup: true
+nomad_docker_rhel_selinux_reboot_timeout: "600"
 
 ### Tls
 nomad_ca_file: ""
