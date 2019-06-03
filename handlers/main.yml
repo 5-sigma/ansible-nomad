@@ -2,4 +2,11 @@
 # File: main.yml handlers file for nomad
 
 - name: restart nomad
-  service: name=nomad state=restarted
+  service:
+    name: nomad
+    state: restarted
+
+- name: reboot nodes
+  reboot:
+    reboot_timeout: {{ nomad_reboot_timeout | d('600') }}
+  listen: "reboot nodes"

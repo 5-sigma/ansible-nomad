@@ -1,15 +1,12 @@
 ---
 # File: selinux.yml - SELinux tasks for Nomad
 
-# SELinux disrupts LXC (shrug)
-
-- name: Stop SELinux enforcing
-  shell: "setenforce 0"
-  when: nomad_docker_enable == "true"
+# This will disable SELinux and set current context to permissive until reboot.
+# At this point the hosts should be rebooted, otherwise this could have negative consequences for volumes created
+# hereafter. (SELinux flags will still be used for mounts in "permissive" and won't be recognized once disabled)
 
 - name: Disable SELinux
-  replace:
-    dest: /etc/selinux/config
-    regexp: '^SELINUX=enforcing'
-    replace: 'SELINUX=disabled'
+  selinux:
+    state: disabled
   when: nomad_docker_enable == "true"
+  notify: "reboot nodes"
