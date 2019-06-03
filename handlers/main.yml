@@ -8,5 +8,5 @@
 
 - name: reboot nodes
   reboot:
-    reboot_timeout: {{ nomad_reboot_timeout | d('600') }}
+    reboot_timeout: {{ nomad_docker_rhel_selinux_reboot_timeout }}
   listen: "reboot nodes"
